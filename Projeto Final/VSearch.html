@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="PCM Final Project - Visual Search" />
+    <meta name="keywords" content="HTML5, CSS, JavaScript" />
+    <meta name="author" content="Rui Jesus" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>Visual Search</title>
+    <link rel="stylesheet" href="css/VSearchStyle.css" />
+    <script src="js/Image_Processing.js"></script>
+    <script src="js/XML_Database.js"></script>
+    <script src="js/ISearchEngine.js"></script>
+    <script src="js/ISearchEngine_Manager.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384- ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/4ba78ff679.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="container-fluid bg-danger">
+      <!-- logo -->
+      <div class="row">
+        <div
+          class="col d-flex justify-content-between justify-content-end align-items-baseline"
+        >
+          <a
+            class="fa-brands fa-facebook text-reset"
+            href="https://www.facebook.com"
+          ></a>
+          <a
+            class="fa-brands fa-twitter text-reset"
+            href="https://www.twitter.com"
+          ></a>
+          <a
+            class="fa-brands fa-instagram text-reset"
+            href="https://www.instagram.com"
+          ></a>
+          <a
+            class="fa-brands fa-linkedin text-reset"
+            href="https://www.linkedin.com"
+          ></a>
+          <div class="col-11 text-right">All rights reserved</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- nav  -->
+    <nav class="navbar py-1 navbar-dark navbar-expand-sm bg-dark">
+      <div class="container-fluid">
+        <!-- my name -->
+
+        <div class="col">
+          <h1 class="text-light">
+            <i class="goo fa-solid fa-image text-danger"></i>Visual Search
+          </h1>
+        </div>
+
+        <!-- logo -->
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarLinks"
+        >
+          <span class="navbar-toggler-icon text-primary"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarLinks"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="navbar-brand h1">
+                <button
+                  class="home"
+                  id="sound"
+                  type="button"
+                  style="color: black"
+                  onclick="sound()"
+                >
+                  Sound
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- buttons -->
+    </nav>
+    <section id="query">
+      <div class="search-bar">
+        <input
+          id="searchbar"
+          type="text"
+          placeholder="Enter your query"
+          onkeyup="search_queries()"
+        />
+        <button type="submit" class="search-button" onclick="search()">
+          Search
+        </button>
+      </div>
+    </section>
+
+    <ol id="list">
+      <li class="queries">Beach</li>
+      <li class="queries">Birthday</li>
+      <li class="queries">Face</li>
+      <li class="queries">Indoor</li>
+      <li class="queries">Manmade/Artificial</li>
+      <li class="queries">Manmade/Manmade</li>
+      <li class="queries">Manmade/Urban</li>
+      <li class="queries">Marriage</li>
+      <li class="queries">Nature</li>
+      <li class="queries">People</li>
+      <li class="queries">Outdoor</li>
+      <li class="queries">Party</li>
+      <li class="queries">No_People</li>
+      <li class="queries">Snow</li>
+    </ol>
+
+    <section id="tools">
+      <div class="dropdown">
+        <div class="colors">
+          <button id="colors" class="clr">
+            Colors <i class="fa-sharp fa-solid fa-caret-down"></i>
+          </button>
+          <div class="color list">
+            <button
+              class="colors red"
+              value="#FF0000"
+              id="colors red"
+              onclick="red()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors orange"
+              value="#FFA500"
+              id="colors orange"
+              onclick="orange()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors yellow"
+              value="#FFFF00"
+              id="colors yellow"
+              onclick="yellow()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors green"
+              value="#00FF00"
+              id="colors green"
+              onclick="green()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors aqua"
+              value="#00FFFF"
+              id="colors aqua"
+              onclick="aqua()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors blue"
+              value="#0000FF"
+              id="colors blue"
+              onclick="blue()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors blueviolet"
+              value="#8A2BE2"
+              id="colors blueviolet"
+              onclick="blueviolet()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors deeppink"
+              value="#FF1493"
+              id="colors deeppink"
+              onclick="deeppink()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors white"
+              value="#FFFFFF"
+              id="colors white"
+              onclick="white()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors grey"
+              value="#808080"
+              id="colors grey"
+              onclick="grey()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors black"
+              value="#000000"
+              id="colors black"
+              onclick="black()"
+            >
+              <span></span>
+            </button>
+            <button
+              class="colors brown"
+              value="#A52A2A"
+              id="colors brown"
+              onclick="brown()"
+            >
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+    </section>
+
+    <section id="visualizacao">
+      <div class="image-grid" id="canvas-grid"></div>
+      <div class="text-center">
+        <br />
+        <button
+          class="home bg-danger"
+          id="more"
+          type="button"
+          style="color: black"
+          onclick="more()"
+        >
+          More
+        </button>
+      </div>
+      <br />
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3 bg-dark text-light">
+        © 2023 Copyright: 48328 Gonçalo Silva
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+    <script>
+      window.onload = main();
+    </script>
+  </body>
+</html>
